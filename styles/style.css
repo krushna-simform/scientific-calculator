@@ -26,6 +26,7 @@
 
     /* Input field height */
     --input-field-height: 6rem;
+    --input-field-font-size: 3rem;
 
     /* number button font size */
     --number-button-fon-size: 1.3rem;
@@ -53,7 +54,24 @@ body {
 /* calculator */
 .calculator {
     height: var(--calculator-height);
+    width: var(--calculator-widht);
     min-width: var(--calculator-widht);
     background-color: var(--calculator-background-color);
     padding: var(--gap);
+}
+
+/* input field */
+.input-field {
+    height: var(--input-field-height);
+    padding: var(--gap);
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.input-field-text {
+    font-size: var(--input-field-font-size);
+    text-wrap-mode: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
 }

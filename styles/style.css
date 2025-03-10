@@ -3,3 +3,40 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root {
+    /* Colors */
+    --body-background-color: #000000;
+    --calculator-background-color: #F2F2F3;
+    --operators-button-color: #F7F6F6;
+    --number-button-color: #FDFCFC;
+    --font-color: #474746;
+    --calculate-button-color: #90C1E6;
+
+    /* Height and width for calculator */
+    --calculator-height: 32.6rem;
+    --calculator-widht: 21.5rem;
+
+    /* Height and widht for buttons */
+    --button-width: 3.9rem;
+    --button-height: 2.5rem;
+
+    /* gap */
+    --gap: 0.2rem;
+
+    /* Input field height */
+    --input-field-height: 6rem;
+
+    /* number button font size */
+    --number-button-fon-size: 1.3rem;
+
+    /* font weight */
+    --font-weight: 600;
+
+    /* SVG height and widht */
+    --svg-height: 1rem;
+    --svg-widht: 1rem;
+
+    /* Operators font size*/
+    --operators-font-size: 1.4rem;
+}

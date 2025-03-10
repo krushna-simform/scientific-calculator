@@ -108,7 +108,7 @@ body {
     gap: var(--gap);
 }
 
-#trignometry-icon, #drop-down-icon, #function-icon, #backspace-icon {
+#trigonometry-icon, #drop-down-icon, #function-icon, #backspace-icon {
     height: var(--svg-height);
     width: var(--svg-widht);
 }

@@ -113,6 +113,39 @@ body {
     width: var(--svg-widht);
 }
 
+/* numeric and operator buttons */
+.numeric-operator-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--gap);
+}
+
+.function-button {
+    height: var(--button-height);
+    width: var(--button-width);
+    background-color: var(--operators-button-color);
+    color: var(--font-color);
+    border: none;
+}
+
+.number-button {
+    height: var(--button-height);
+    width: var(--button-width);
+    background-color: var(--number-button-color);
+    color: var(--font-color);
+    font-size: var(--number-button-fon-size);
+    font-weight: 600;
+    border: none;
+}
+
+.operators-font-size {
+    font-size: var(--operators-font-size);
+}
+
+#calculate-button {
+    background-color: var(--calculate-button-color);
+}
+
 .opacity {
     opacity: 0.3;
 }

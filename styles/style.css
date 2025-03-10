@@ -84,3 +84,16 @@ body {
     font-weight: var(--font-weight);
     border: none;
 }
+
+/* memory functions */
+.memory-functions button {
+    height: var(--button-height);
+    width: var(--button-width);
+    background: transparent;
+    font-weight: var(--font-weight);
+    border: none;
+}
+
+.opacity {
+    opacity: 0.3;
+}

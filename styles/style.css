@@ -40,3 +40,20 @@
     /* Operators font size*/
     --operators-font-size: 1.4rem;
 }
+
+body {
+    background-color: var(--body-background-color);
+    height: 100vh;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* calculator */
+.calculator {
+    height: var(--calculator-height);
+    min-width: var(--calculator-widht);
+    background-color: var(--calculator-background-color);
+    padding: var(--gap);
+}

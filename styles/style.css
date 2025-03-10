@@ -149,3 +149,10 @@ body {
 .opacity {
     opacity: 0.3;
 }
+
+/* for every button in calculator ui*/
+button:hover {
+    cursor: pointer;
+    background-color: var(--calculate-button-color);
+    transition: ease-in-out;
+}

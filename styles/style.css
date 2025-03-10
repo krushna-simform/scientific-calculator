@@ -75,3 +75,12 @@ body {
     overflow-x: auto;
     scrollbar-width: none;
 }
+
+/* def-functions */
+.deg-functions button {
+    height: var(--button-height);
+    width: var(--button-width);
+    background: transparent;
+    font-weight: var(--font-weight);
+    border: none;
+}

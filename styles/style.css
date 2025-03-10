@@ -94,6 +94,25 @@ body {
     border: none;
 }
 
+/* trigonometry functions */
+.trigonometry-functions button{
+    height: var(--button-height);
+    background: transparent;
+    border: none;
+    padding: 0 0.5rem;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+}
+
+#trignometry-icon, #drop-down-icon, #function-icon, #backspace-icon {
+    height: var(--svg-height);
+    width: var(--svg-widht);
+}
+
 .opacity {
     opacity: 0.3;
 }

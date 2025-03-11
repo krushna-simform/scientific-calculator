@@ -8,6 +8,8 @@ class Calculator {
         this.buttons = document.querySelectorAll(buttonSelectors);
 
         this.currentInput = "";
+
+        this.expression = new Expression();
         
         this.init();
     }
@@ -31,6 +33,35 @@ class Calculator {
 
     removeLastCharacter () {
         this.currentInput = this.currentInput.slice(0, -1);
+        this.inputField.textContent = this.currentInput;
+    }
+
+    handleButtonClick (e) {
+        const value = e.target.closest("button").value;
+
+        switch (value) {
+            case "clear-all":
+                this.clearInputField();
+                break;
+            case "backspace":
+                this.removeLastCharacter();
+                break;
+            case "calculate":
+                try {
+                    this.displayValue();
+                } catch (err) {
+                    alert("Invalid Expression");
+                }
+                break;
+            default:
+                this.updateInputField(value);
+                break;
+        }
+    }
+
+    displayValue () {
+        const result = this.expression.evaluateExpression(this.currentInput);
+        this.currentInput = result.toString();
         this.inputField.textContent = this.currentInput;
     }
 }

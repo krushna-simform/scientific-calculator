@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --body-background-color: #000000;
+    --calculator-background-color: #F2F2F3;
+    --operators-button-color: #F7F6F6;
+    --number-button-color: #FDFCFC;
+    --font-color: #474746;
+    --calculate-button-color: #90C1E6;
+
+    /* Height and width for calculator */
+    --calculator-height: 32.6rem;
+    --calculator-widht: 21.5rem;
+
+    /* Height and widht for buttons */
+    --button-width: 3.9rem;
+    --button-height: 2.5rem;
+
+    /* gap */
+    --gap: 0.2rem;
+
+    /* Input field height */
+    --input-field-height: 6rem;
+    --input-field-font-size: 3rem;
+
+    /* number button font size */
+    --number-button-fon-size: 1.3rem;
+
+    /* font weight */
+    --font-weight: 600;
+
+    /* SVG height and widht */
+    --svg-height: 1rem;
+    --svg-widht: 1rem;
+
+    /* Operators font size*/
+    --operators-font-size: 1.4rem;
+}
+
+body {
+    background-color: var(--body-background-color);
+    height: 100vh;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* calculator */
+.calculator {
+    height: var(--calculator-height);
+    width: var(--calculator-widht);
+    min-width: var(--calculator-widht);
+    background-color: var(--calculator-background-color);
+    padding: var(--gap);
+}
+
+/* input field */
+.input-field {
+    height: var(--input-field-height);
+    padding: var(--gap);
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.input-field-text {
+    font-size: var(--input-field-font-size);
+    text-wrap-mode: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+/* def-functions */
+.deg-functions button {
+    height: var(--button-height);
+    width: var(--button-width);
+    background: transparent;
+    font-weight: var(--font-weight);
+    border: none;
+}
+
+/* memory functions */
+.memory-functions button {
+    height: var(--button-height);
+    width: var(--button-width);
+    background: transparent;
+    font-weight: var(--font-weight);
+    border: none;
+}
+
+/* trigonometry functions */
+.trigonometry-functions button{
+    height: var(--button-height);
+    background: transparent;
+    border: none;
+    padding: 0 0.5rem;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+}
+
+#trigonometry-icon, .drop-down-icon, #function-icon, #backspace-icon {
+    height: var(--svg-height);
+    width: var(--svg-widht);
+}
+
+/* numeric and operator buttons */
+.numeric-operator-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--gap);
+}
+
+.function-button {
+    height: var(--button-height);
+    width: var(--button-width);
+    background-color: var(--operators-button-color);
+    color: var(--font-color);
+    border: none;
+}
+
+.number-button {
+    height: var(--button-height);
+    width: var(--button-width);
+    background-color: var(--number-button-color);
+    color: var(--font-color);
+    font-size: var(--number-button-fon-size);
+    font-weight: 600;
+    border: none;
+}
+
+.operators-font-size {
+    font-size: var(--operators-font-size);
+}
+
+#calculate-button {
+    background-color: var(--calculate-button-color);
+}
+
+.opacity {
+    opacity: 0.3;
+}
+
+/* for every button in calculator ui*/
+button:hover {
+    cursor: pointer;
+    background-color: var(--calculate-button-color);
+    transition: ease-in-out;
+}

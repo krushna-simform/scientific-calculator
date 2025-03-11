@@ -1,4 +1,5 @@
 import { Expression } from "./expression.js";
+import { History } from "./history.js";
 
 class Calculator {
     constructor (calculatorSelector, inputFieldSelector, buttonSelectors) {
@@ -9,8 +10,10 @@ class Calculator {
 
         this.currentInput = "";
         this.resultDisplayed = false;
+        this.history = [];
 
         this.expression = new Expression();
+        this.h = new History(this.history, "history");
         
         this.init();
     }
@@ -95,16 +98,17 @@ class Calculator {
                 this.displayValue();
                 this.resultDisplayed = true;
             } catch (err) {
-                // alert("Invalid Expression");
-                console.log(err)
+                alert("Invalid Expression");
             }
         }   
     }
 
     displayValue () {
         const result = this.expression.evaluateExpression(this.currentInput);
+        this.history.push({ question: this.currentInput, answer: result});
         this.currentInput = result.toString();
         this.inputField.textContent = this.currentInput;
+        this.h.historySave();
     }
 }
 

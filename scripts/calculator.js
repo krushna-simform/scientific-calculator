@@ -8,6 +8,7 @@ class Calculator {
         this.buttons = document.querySelectorAll(buttonSelectors);
 
         this.currentInput = "";
+        this.resultDisplayed = false;
 
         this.expression = new Expression();
         
@@ -21,6 +22,10 @@ class Calculator {
     }
 
     updateInputField (value) {
+        if (this.resultDisplayed && /[0-9.]/.test(value)) {
+            this.clearInputField();
+        }
+        this.resultDisplayed = false;
         this.currentInput += value;
         this.inputField.textContent = this.currentInput;
         this.inputField.scrollTo(this.inputField.offsetWidth, 0);
@@ -42,6 +47,7 @@ class Calculator {
         switch (value) {
             case "clear-all":
                 this.clearInputField();
+                this.resultDisplayed = false;
                 break;
             case "backspace":
                 this.removeLastCharacter();
@@ -49,11 +55,15 @@ class Calculator {
             case "calculate":
                 try {
                     this.displayValue();
+                    this.resultDisplayed = true;
                 } catch (err) {
                     alert("Invalid Expression");
                 }
                 break;
             default:
+                if (this.resultDisplayed && !/[\+\-\*\/]/.test(value)) {
+                    this.clearInputField();
+                }
                 this.updateInputField(value);
                 break;
         }

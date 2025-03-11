@@ -19,6 +19,8 @@ class Calculator {
         this.buttons.forEach(button => {
             button.addEventListener("click", (e) => this.handleButtonClick(e));
         });
+
+        document.addEventListener("keydown", (e) => this.handleKeyEvent(e));
     }
 
     updateInputField (value) {
@@ -67,6 +69,36 @@ class Calculator {
                 this.updateInputField(value);
                 break;
         }
+    }
+
+    handleKeyEvent (e) {
+        const key = e.key;
+
+        if (/[0-9\.\(\)]/.test(key)) {
+            this.updateInputField(key);
+        }
+        
+        if (/[\+\-\*\/]/.test(key)) {
+            this.updateInputField(key);
+        }
+        
+        if (key === "Backspace") {
+            this.removeLastCharacter();
+        }
+
+        if (key === "C" || key === "c"){
+            this.clearInputField();
+        }
+        
+        if (key === "Enter") {
+            try {
+                this.displayValue();
+                this.resultDisplayed = true;
+            } catch (err) {
+                // alert("Invalid Expression");
+                console.log(err)
+            }
+        }   
     }
 
     displayValue () {

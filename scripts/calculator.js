@@ -56,6 +56,15 @@ class Calculator {
         }
     }
 
+    calculateResult () {
+        try {
+            this.displayValue();
+            this.resultDisplayed = true;
+        } catch (err) {
+            alert("Invalid Expression");
+        }
+    }
+
     // Handle mouse events
     handleButtonClick (e) {
         const button = e.target.closest("button");
@@ -71,19 +80,13 @@ class Calculator {
                 this.removeLastCharacter();
                 break;
             case "calculate":
-                try {
-                    this.displayValue();
-                    this.resultDisplayed = true;
-                } catch (err) {
-                    alert("Invalid Expression");
-                }
+                this.calculateResult();
                 break;
             default:
                 if (this.resultDisplayed && !/[\+\-\*\/]/.test(value)) {
                     this.clearInputField();
                 }
                 this.updateInputField(value);
-                break;
         }
     }
 
@@ -98,12 +101,7 @@ class Calculator {
         } else if (key.toLowerCase() === "c"){
             this.clearInputField();
         } else if (key === "Enter") {
-            try {
-                this.displayValue();
-                this.resultDisplayed = true;
-            } catch (err) {
-                alert("Invalid Expression");
-            }
+            this.calculateResult();
         }   
     }
 

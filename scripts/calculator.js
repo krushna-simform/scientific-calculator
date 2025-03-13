@@ -8,7 +8,7 @@ class Calculator {
         this.inputField = document.querySelector(inputFieldSelector);
         this.buttons = document.querySelectorAll(buttonSelectors);
 
-        this.currentInput = "";
+        this.currentInput = "0";
         this.resultDisplayed = false;
         this.history = [];
 
@@ -32,14 +32,18 @@ class Calculator {
             this.clearInputField();
         }
         this.resultDisplayed = false;
-        this.currentInput += value;
+        if (this.inputField.textContent.trim() === "0") {
+            this.currentInput = value;
+        } else {
+            this.currentInput += value
+        }
         this.inputField.textContent = this.currentInput;
         this.inputField.scrollTo(this.inputField.offsetWidth, 0);
     }
 
     // for clear eniter input field
     clearInputField () {
-        this.currentInput = "";
+        this.currentInput = "0";
         this.inputField.textContent = this.currentInput;
     }
 
@@ -47,6 +51,9 @@ class Calculator {
     removeLastCharacter () {
         this.currentInput = this.currentInput.slice(0, -1);
         this.inputField.textContent = this.currentInput;
+        if (this.inputField.textContent.trim() === "") {
+            this.clearInputField();
+        }
     }
 
     // for handle mouse event

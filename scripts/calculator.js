@@ -58,7 +58,9 @@ class Calculator {
 
     // Handle mouse events
     handleButtonClick (e) {
-        const value = e.target.closest("button").value;
+        const button = e.target.closest("button");
+        if(!button) return;
+        const value = button.value;
 
         switch (value) {
             case "clear-all":

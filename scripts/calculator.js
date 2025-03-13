@@ -91,23 +91,13 @@ class Calculator {
     handleKeyEvent (e) {
         const key = e.key;
 
-        if (/[0-9\.\(\)]/.test(key)) {
+        if (/[0-9.()\+\-\*\/]/.test(key)) {
             this.updateInputField(key);
-        }
-        
-        if (/[\+\-\*\/]/.test(key)) {
-            this.updateInputField(key);
-        }
-        
-        if (key === "Backspace") {
+        } else if (key === "Backspace") {
             this.removeLastCharacter();
-        }
-
-        if (key === "C" || key === "c"){
+        } else if (key.toLowerCase() === "c"){
             this.clearInputField();
-        }
-        
-        if (key === "Enter") {
+        } else if (key === "Enter") {
             try {
                 this.displayValue();
                 this.resultDisplayed = true;

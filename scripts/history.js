@@ -1,7 +1,7 @@
 class History {
     constructor (history, key) {
-        this.history = history;
-        this.key = key
+        this.history = history || [];
+        this.key = key;
 
         this.init();
     }
@@ -20,8 +20,7 @@ class History {
     // Save calculated value and input in local storage
     historySave () {
         localStorage.setItem(this.key, JSON.stringify(this.history));
-    }
-
+    }   
 }
 
 export { History };

@@ -3,10 +3,10 @@ class History {
         this.history = history || [];
         this.key = key;
 
-        this.init();
+        this.appendHistory();
     }
 
-    init () {
+    appendHistory () {
         try {
             const storedHistory = JSON.parse(localStorage.getItem(this.key)) || [];
             if (Array.isArray(storedHistory)) {

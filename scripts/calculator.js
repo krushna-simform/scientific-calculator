@@ -108,15 +108,13 @@ class Calculator {
     // Display calculated value in input field and store that value in localstorage
     displayValue () {
         const result = this.expression.evaluateExpression(this.currentInput);
-        if (isNaN(result)) {
-            alert("Invalid calculation");
-            return;
-        } else {
-            this.history.push({ question: this.currentInput, answer: result});
-            this.currentInput = result.toString();
-            this.inputField.textContent = this.currentInput;
-            this.h.historySave();
-        }
+
+        if(isNaN(result)) return;
+        
+        this.history.push({ question: this.currentInput, answer: result});
+        this.currentInput = result.toString();
+        this.inputField.textContent = this.currentInput;
+        this.h.historySave();
     }
 }
 

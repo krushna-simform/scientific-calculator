@@ -17,7 +17,7 @@ class History {
         }
     }
 
-    // for save calculated value and input in local storage
+    // Save calculated value and input in local storage
     historySave () {
         localStorage.setItem(this.key, JSON.stringify(this.history));
     }

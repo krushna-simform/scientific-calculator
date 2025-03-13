@@ -26,7 +26,7 @@ class Calculator {
         document.addEventListener("keydown", (e) => this.handleKeyEvent(e));
     }
 
-    // for update input field values
+    // Update input field values
     updateInputField (value) {
         if (this.resultDisplayed && /[0-9.]/.test(value)) {
             this.clearInputField();
@@ -41,13 +41,13 @@ class Calculator {
         this.inputField.scrollTo(this.inputField.offsetWidth, 0);
     }
 
-    // for clear eniter input field
+    // Clear eniter input field
     clearInputField () {
         this.currentInput = "0";
         this.inputField.textContent = this.currentInput;
     }
 
-    // for remove only last charecter
+    // Removes only the last character
     removeLastCharacter () {
         this.currentInput = this.currentInput.slice(0, -1);
         this.inputField.textContent = this.currentInput;
@@ -56,7 +56,7 @@ class Calculator {
         }
     }
 
-    // for handle mouse event
+    // Handle mouse events
     handleButtonClick (e) {
         const value = e.target.closest("button").value;
 
@@ -85,7 +85,7 @@ class Calculator {
         }
     }
 
-    // for handle keybord events
+    // Handle keybord events
     handleKeyEvent (e) {
         const key = e.key;
 
@@ -115,7 +115,7 @@ class Calculator {
         }   
     }
 
-    // for display calculated value on input field and store that value in localstorage
+    // Display calculated value in input field and store that value in localstorage
     displayValue () {
         const result = this.expression.evaluateExpression(this.currentInput);
         this.history.push({ question: this.currentInput, answer: result});

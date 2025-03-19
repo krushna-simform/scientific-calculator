@@ -40,6 +40,9 @@
 
     /* Operators font size*/
     --operators-font-size: 1.4rem;
+
+    /* border radius */
+    --border-radius: 0.5rem;
 }
 
 body {
@@ -58,6 +61,7 @@ body {
     min-width: var(--calculator-widht);
     background-color: var(--calculator-background-color);
     padding: var(--gap);
+    border-radius: var(--border-radius);
 }
 
 /* input field */

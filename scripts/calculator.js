@@ -28,9 +28,19 @@ class Calculator {
 
     // Update input field values
     updateInputField (value) {
-        if (this.resultDisplayed && /[0-9.]/.test(value)) {
+        let lastChar = this.currentInput.slice(-1);
+        let operator = ["+", "-", "*", "/"];
+
+        if (operator.includes(value) && operator.includes(lastChar)) {
+            return;
+        } else if (this.resultDisplayed && /[0-9.]/.test(value)) {
             this.clearInputField();
-        }
+        } else if (value === "." && lastChar === ".") {
+            return;
+        } else if (value === "." && this.currentInput.split(/[\+\-\*\/]/).pop().includes(".")) {
+            return;
+        }   
+
         this.resultDisplayed = false;
         if (this.inputField.textContent.trim() === "0") {
             this.currentInput = value;

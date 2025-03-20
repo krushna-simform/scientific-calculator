@@ -62,6 +62,7 @@ body {
     background-color: var(--calculator-background-color);
     padding: var(--gap);
     border-radius: var(--border-radius);
+    position: relative;
 }
 
 /* input field */
@@ -182,6 +183,24 @@ body {
 
 #trig-popup button:hover {
     background-color: var(--calculate-button-color);
+}
+
+/* Functions Popup */
+#func-popup {
+    background-color: var(--calculator-background-color);
+    left: 8rem;
+}
+
+#func-popup button {
+    background-color: var(--number-button-color);
+    color: black;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+#func-popup button:hover {
+    background: var(--calculate-button-color);
 }
 
 /* Hide Popups by Default */

@@ -43,6 +43,9 @@ class Expression {
             expression = expression.replace(/\bsqrt\(/g, "Math.sqrt(");
             expression = expression.replace(/\blog\(/g, "Math.log10(");
             expression = expression.replace(/\bln\b/g, "Math.log");
+            expression = expression.replace(/\bfloor\(/g, "Math.floor(");   
+            expression = expression.replace(/\bceil\(/g, "Math.ceil(");
+            expression = expression.replace(/\bround\(/g, "Math.round(");
 
             if (eval(expression) == "Infinity") {
                 alert("Inifinity | Invalid expression");

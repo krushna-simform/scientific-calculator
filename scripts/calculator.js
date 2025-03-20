@@ -27,6 +27,7 @@ class Calculator {
         document.addEventListener("keydown", (e) => this.handleKeyEvent(e));
 
         this.setupPopup("button[value='trigonometry']", "trig-popup");
+        this.setupPopup("button[value='functions']", "func-popup");
     }
 
     setupPopup(triggerSelector, popupId) {
@@ -124,7 +125,7 @@ class Calculator {
         if(!button) return;
         const value = button.value;
 
-        const notPrintValue = ["trigonometry"];
+        const notPrintValue = ["trigonometry", "functions"];
 
         if (notPrintValue.includes(value)) {
             return;

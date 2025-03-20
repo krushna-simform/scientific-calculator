@@ -14,7 +14,7 @@
     --calculate-button-color: #90C1E6;
 
     /* Height and width for calculator */
-    --calculator-height: 32.6rem;
+    --calculator-height: 34rem;
     --calculator-widht: 21.5rem;
 
     /* Height and widht for buttons */
@@ -69,6 +69,7 @@ body {
 .input-field {
     height: var(--input-field-height);
     padding: var(--gap);
+    margin-top: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -79,6 +80,16 @@ body {
     text-wrap-mode: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
+}
+
+/* history logo */
+#history-logo {
+    height: 1.6rem;
+    width: 1.6rem;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+    cursor: pointer;
 }
 
 /* def-functions */

@@ -1,9 +1,14 @@
 class Expression {
-    evaluateExpression (expression) {
+    evaluateExpression (expression, degreeMode = false) {
         function factorial (n) {
             if (n === 0 || n === 1) return 1;
             return n * factorial(n - 1);
         }
+
+        // Define trigonometric functions in degrees
+        Math.sindeg = (x) => Math.sin((Math.PI / 180) * x);
+        Math.cosdeg = (x) => Math.cos((Math.PI / 180) * x);
+        Math.tandeg = (x) => Math.tan((Math.PI / 180) * x);
 
         try {
             // Remove 0 value exp: 03 => 3
@@ -22,9 +27,15 @@ class Expression {
             expression = expression.replace(/(\d+)!/g, "factorial($1)");
 
             // Trigonometric functions conversion
-            expression = expression.replace(/\bsin\(/g, "Math.sin(");
-            expression = expression.replace(/\bcos\(/g, "Math.cos(");
-            expression = expression.replace(/\btan\(/g, "Math.tan(")
+            if (degreeMode) {
+                expression = expression.replace(/\bsin\(/g, "Math.sindeg(");
+                expression = expression.replace(/\bcos\(/g, "Math.cosdeg(");
+                expression = expression.replace(/\btan\(/g, "Math.tandeg(");
+            } else {
+                expression = expression.replace(/\bsin\(/g, "Math.sin(");
+                expression = expression.replace(/\bcos\(/g, "Math.cos(");
+                expression = expression.replace(/\btan\(/g, "Math.tan(");
+            }
 
             // Handle other math functions
             expression = expression.replace(/\babs\(/g, "Math.abs(");

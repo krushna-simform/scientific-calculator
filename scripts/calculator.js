@@ -11,6 +11,7 @@ class Calculator {
         this.currentInput = "0";
         this.resultDisplayed = false;
         this.history = [];
+        this.isDegreeMode = false;
 
         this.expression = new Expression();
         this.h = new History(this.history, "history");
@@ -103,6 +104,20 @@ class Calculator {
         }
     }
 
+    toggleDegRed(button) {
+        if (button.value == "degree") {
+            button.value = "radian";
+            button.textContent = "RAD";
+            button.ariaLabel = "Radian Mode";
+            this.isDegreeMode = true;
+        } else {
+            button.value = "degree";
+            button.textContent = "DEG";
+            button.ariaLabel = "Degree Mode";
+            this.isDegreeMode = false;
+        }
+    }
+
     // Handle mouse events
     handleButtonClick (e) {
         const button = e.target.closest("button");
@@ -125,6 +140,10 @@ class Calculator {
                 break;
             case "calculate":
                 this.calculateResult();
+                break;
+            case "degree":
+            case "radian":
+                this.toggleDegRed(button);
                 break;
             default:
                 if (this.resultDisplayed && !/[\+\-\*\/]/.test(value)) {
@@ -151,7 +170,7 @@ class Calculator {
 
     // Display calculated value in input field and store that value in localstorage
     displayValue () {
-        const result = this.expression.evaluateExpression(this.currentInput);
+        const result = this.expression.evaluateExpression(this.currentInput, this.isDegreeMode);
 
         if(isNaN(result)) return;
         

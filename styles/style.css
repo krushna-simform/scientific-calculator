@@ -154,6 +154,41 @@ body {
     opacity: 0.3;
 }
 
+/* Common Popup Style */
+.popup {
+    position: absolute;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Trigonometry Popup */
+#trig-popup {
+    background-color: var(--calculator-background-color);
+    color: var(--font-color);
+}
+
+#trig-popup button {
+    background: var(--number-button-color);
+    color: var(--font-color);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+}
+
+#trig-popup button:hover {
+    background-color: var(--calculate-button-color);
+}
+
+/* Hide Popups by Default */
+.hidden {
+    display: none;
+}
+
 /* for every button in calculator ui*/
 button:hover {
     cursor: pointer;

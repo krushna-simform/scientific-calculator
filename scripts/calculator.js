@@ -24,6 +24,34 @@ class Calculator {
         });
 
         document.addEventListener("keydown", (e) => this.handleKeyEvent(e));
+
+        this.setupPopup("button[value='trigonometry']", "trig-popup");
+    }
+
+    setupPopup(triggerSelector, popupId) {
+        const trigger = document.querySelector(triggerSelector);
+        const popup = document.getElementById(popupId);
+
+        trigger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            popup.classList.toggle("hidden");
+        });
+
+        popup.querySelectorAll("button").forEach(button => {
+            button.addEventListener("click", (e) => {
+                const value = e.target.getAttribute("value");
+                if (value) {
+                    this.updateInputField(value + "(");
+                }
+                popup.classList.add("hidden");
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!popup.contains(e.target) && !trigger.contains(e.target)) {
+                popup.classList.add("hidden");
+            }
+        });
     }
 
     // Update input field values
@@ -80,6 +108,12 @@ class Calculator {
         const button = e.target.closest("button");
         if(!button) return;
         const value = button.value;
+
+        const notPrintValue = ["trigonometry"];
+
+        if (notPrintValue.includes(value)) {
+            return;
+        }
 
         switch (value) {
             case "clear-all":

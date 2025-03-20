@@ -14,6 +14,8 @@ class Calculator {
         this.isDegreeMode = false;
         this.isSecondPrimary = false;
 
+        this.feButton = document.querySelector("button[value='f-e']");
+
         this.sinBtn = document.querySelector("button[value='sin']");
         this.cosBtn = document.querySelector("button[value='cos']");
         this.tanBtn = document.querySelector("button[value='tan']");
@@ -31,6 +33,8 @@ class Calculator {
         });
 
         document.addEventListener("keydown", (e) => this.handleKeyEvent(e));
+
+        this.feButton.addEventListener("click", () => this.toggleFE());
 
         document.getElementById("history-logo").addEventListener("click", () => this.toggleHistoryPopup());
         document.querySelector("#clear-history").addEventListener("click", () => this.clearHistory());
@@ -115,11 +119,27 @@ class Calculator {
 
     calculateResult () {
         try {
-            this.displayValue();
+            let result = this.expression.evaluateExpression(this.currentInput, this.isDegreeMode);
+
+            if (this.feMode) {
+                result = this.toEngineeringNotation(result);
+            }
+
+            this.displayValue(result);
             this.resultDisplayed = true;
         } catch (err) {
             alert("Invalid Expression");
         }
+    }
+
+    // Convert value into engineering notation
+    toEngineeringNotation(value) {
+        if (value === 0) return "0";
+
+        let exponent = Math.floor(Math.log10(Math.abs(value)) / 3) * 3;
+        let coefficient = value / Math.pow(10, exponent);
+
+        return `${coefficient.toFixed(3)}E${exponent}`;
     }
 
     // Toggle RED and DEG button
@@ -192,13 +212,29 @@ class Calculator {
         this.displayHistory();
     }
 
+    // Toggle Engineering notation
+    toggleFE() {
+        if (this.feButton.value === "f-e") {
+            this.feButton.value = "ex";
+            this.feButton.textContent = "E";
+            this.feButton.ariaLabel = "Scientific Notation Mode";
+            this.feMode = true;
+        } else {
+            this.feButton.value = "f-e";
+            this.feButton.textContent = "F-E";
+            this.feButton.ariaLabel = "Default Notation Mode";
+            this.feMode = false;
+        }
+        this.updateDisplay();
+    }
+
     // Handle mouse events
     handleButtonClick (e) {
         const button = e.target.closest("button");
         if(!button) return;
         const value = button.value;
 
-        const notPrintValue = ["trigonometry", "functions"];
+        const notPrintValue = ["trigonometry", "functions", "f-e", "ex"];
 
         if (notPrintValue.includes(value)) {
             return;
@@ -273,9 +309,7 @@ class Calculator {
     }
 
     // Display calculated value in input field and store that value in localstorage
-    displayValue () {
-        const result = this.expression.evaluateExpression(this.currentInput, this.isDegreeMode);
-
+    displayValue (result) {
         if(isNaN(result)) return;
         
         this.h.dataPush({ question: this.currentInput, answer: result}, () => {

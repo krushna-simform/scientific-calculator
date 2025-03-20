@@ -302,14 +302,16 @@ class Calculator {
             document.activeElement.blur();
         }
 
-        if (/[0-9.()\+\-\*\/^\!]/.test(key)) {
-            this.updateInputField(key);
-        } else if (key === "Backspace") {
+       if (key === "Backspace") {
             this.removeLastCharacter();
-        } else if (key.toLowerCase() === "c"){
+        } else if (key.toLowerCase() === "c") {
             this.clearInputField();
         } else if (key === "Enter") {
             this.calculateResult();
+        } else if (key === "E") {
+            this.updateInputField("e");
+        } else if (/[0-9.()\+\-\*\/^\!e]/.test(key)) { 
+            this.updateInputField(key.toLowerCase());
         }   
     }
 

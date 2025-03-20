@@ -1,5 +1,6 @@
 import { Expression } from "./expression.js";
 import { History } from "./history.js";
+import { Memory } from "./memory.js";
 
 class Calculator {
     constructor (calculatorSelector, inputFieldSelector, buttonSelectors) {
@@ -20,6 +21,7 @@ class Calculator {
 
         this.expression = new Expression();
         this.h = new History(this.history, "history");
+        this.memory = new Memory();
         
         this.init();
     }
@@ -178,6 +180,21 @@ class Calculator {
             case "second-function":
             case "primary-function":
                 this.toggleSecondPrimary(button);
+                break;
+            case "memory-clear": 
+                this.memory.memoryClear();
+                break;
+            case "memory-recall":
+                this.updateInputField(this.memory.memoryRecall().toString());
+                break;
+            case "memory-add":
+                this.memory.memoryAdd(parseFloat(this.currentInput) || 0);
+                break;
+            case "memory-subtract":
+                this.memory.memorySubtract(parseFloat(this.currentInput) || 0);
+                break;
+            case "memory-store":
+                this.memory.memoryStore(parseFloat(this.currentInput) || 0);
                 break;
             default:
                 if (this.resultDisplayed && !/[\+\-\*\/]/.test(value)) {

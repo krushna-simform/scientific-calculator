@@ -1,6 +1,6 @@
 class History {
-    constructor (history, key) {
-        this.history = history || [];
+    constructor (key) {
+        this.history = [];
         this.key = key;
 
         this.appendHistory();
@@ -17,10 +17,28 @@ class History {
         }
     }
 
+    dataPush (data) {
+        this.history.push(data);
+        this.historySave();
+    }
+
     // Save calculated value and input in local storage
     historySave () {
         localStorage.setItem(this.key, JSON.stringify(this.history));
     }   
+
+    // Get history from localStorage
+    getHistory() {
+        const storedData = JSON.parse(localStorage.getItem(this.key)) || [];
+        return storedData.map(entry => `${entry.question} = ${entry.answer}`);
+    }
+
+    // Clear history and reset Array
+    clearHistory() {
+        localStorage.removeItem(this.key);
+        this.history = [];  
+        this.historySave();  
+    }
 }
 
 export { History };

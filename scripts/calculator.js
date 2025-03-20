@@ -297,6 +297,11 @@ class Calculator {
     handleKeyEvent (e) {
         const key = e.key;
 
+        // Remove focus from last clicked button
+        if (document.activeElement.tagName === "BUTTON") {
+            document.activeElement.blur();
+        }
+
         if (/[0-9.()\+\-\*\/^\!]/.test(key)) {
             this.updateInputField(key);
         } else if (key === "Backspace") {

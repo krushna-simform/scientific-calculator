@@ -24,7 +24,9 @@ class Expression {
             // Handle other math functions
             expression = expression.replace(/\babs\(/g, "Math.abs(");
             expression = expression.replace(/\bexp\(/g, "Math.exp(");
-            expression = expression.replace(/\bsqrt\(/g, "Math.sqrt(")
+            expression = expression.replace(/\bsqrt\(/g, "Math.sqrt(");
+            expression = expression.replace(/\blog\(/g, "Math.log10(");
+            expression = expression.replace(/\bln\b/g, "Math.log");
 
             if (eval(expression) == "Infinity") {
                 alert("Inifinity | Invalid expression");

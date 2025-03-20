@@ -219,6 +219,47 @@ body {
     display: none;
 }
 
+/* History Popup */
+#history-popup {
+    position: absolute;
+    bottom: 0;
+    width: 21.2rem;
+    height: 21rem;
+    background: var(--number-button-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    z-index: 1000;
+}
+
+#history-popup p {
+    margin-bottom: 0.6rem;
+    text-align: center;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    max-height: 15rem;
+    overflow-y: auto;
+}   
+
+#history-list li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+#clear-history {
+    width: 100%;
+    margin-top: 10px;
+    background: var(--calculate-button-color);
+    color: var(--font-color);
+    font-weight: var(--font-weight);
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+
 /* for every button in calculator ui*/
 button:hover {
     cursor: pointer;

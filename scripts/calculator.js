@@ -11,7 +11,6 @@ class Calculator {
 
         this.currentInput = "0";
         this.resultDisplayed = false;
-        this.history = [];
         this.isDegreeMode = false;
         this.isSecondPrimary = false;
 
@@ -20,7 +19,7 @@ class Calculator {
         this.tanBtn = document.querySelector("button[value='tan']");
 
         this.expression = new Expression();
-        this.h = new History(this.history, "history");
+        this.h = new History("history");
         this.memory = new Memory();
         
         this.init();
@@ -32,6 +31,9 @@ class Calculator {
         });
 
         document.addEventListener("keydown", (e) => this.handleKeyEvent(e));
+
+        document.getElementById("history-logo").addEventListener("click", () => this.toggleHistoryPopup());
+        document.querySelector("#clear-history").addEventListener("click", () => this.clearHistory());
 
         this.setupPopup("button[value='trigonometry']", "trig-popup");
         this.setupPopup("button[value='functions']", "func-popup");
@@ -150,6 +152,34 @@ class Calculator {
         console.log(this.isSecondPrimary);
     }
 
+    toggleHistoryPopup() {
+        const historyPopup = document.getElementById("history-popup");
+        historyPopup.classList.toggle("hidden");
+        this.displayHistory();
+    }
+
+    displayHistory() {
+        const historyList = document.getElementById("history-list");
+        historyList.innerHTML = "";
+        const historyData = this.h.getHistory();
+
+        if (historyData.length === 0) {
+            historyList.innerHTML = "<li>No history available</li>";
+            return;
+        }
+
+        historyData.forEach(entry => {
+            const li = document.createElement("li");
+            li.textContent = entry;
+            historyList.appendChild(li);
+        });
+    }
+
+    clearHistory() {
+        this.h.clearHistory();
+        this.displayHistory();
+    }
+
     // Handle mouse events
     handleButtonClick (e) {
         const button = e.target.closest("button");
@@ -225,10 +255,11 @@ class Calculator {
 
         if(isNaN(result)) return;
         
-        this.history.push({ question: this.currentInput, answer: result});
+        this.h.dataPush({ question: this.currentInput, answer: result}, () => {
+            this.displayHistory();
+        });
         this.currentInput = result.toString();
         this.inputField.textContent = this.currentInput;
-        this.h.historySave();
     }
 }
 

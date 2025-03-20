@@ -17,9 +17,10 @@ class History {
         }
     }
 
-    dataPush (data) {
+    dataPush (data, cb = () => {}) {
         this.history.push(data);
         this.historySave();
+        cb();
     }
 
     // Save calculated value and input in local storage

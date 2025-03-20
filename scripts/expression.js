@@ -1,5 +1,10 @@
 class Expression {
     evaluateExpression (expression) {
+        function factorial (n) {
+            if (n === 0 || n === 1) return 1;
+            return n * factorial(n - 1);
+        }
+
         try {
             // Remove 0 value exp: 03 => 3
             expression = expression.replace(/\b0+(\d+)/g, "$1");
@@ -12,6 +17,9 @@ class Expression {
 
             // x^y → Math.pow(x, y)
             expression = expression.replace(/(\d+(\.\d+)?|\([^()]+\))\^(\d+(\.\d+)?|\([^()]+\))/g, "Math.pow($1,$3)");
+
+            // Replace factorial notation
+            expression = expression.replace(/(\d+)!/g, "factorial($1)");
 
             // Handle other math functions
             expression = expression.replace(/\babs\(/g, "Math.abs(");

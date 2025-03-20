@@ -15,6 +15,8 @@ class Expression {
 
             // Handle other math functions
             expression = expression.replace(/\babs\(/g, "Math.abs(");
+            expression = expression.replace(/\bexp\(/g, "Math.exp(");
+            expression = expression.replace(/\bsqrt\(/g, "Math.sqrt(")
 
             if (eval(expression) == "Infinity") {
                 alert("Inifinity | Invalid expression");

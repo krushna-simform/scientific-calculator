@@ -67,6 +67,11 @@ class Calculator {
 
     // Update input field values
     updateInputField (value) {
+        if (this.currentInput.length >= 25) {
+            alert("You can only add up to 25 characters");
+            return;
+        }
+
         let lastChar = this.currentInput.slice(-1);
         let operator = ["+", "-", "*", "/"];
 

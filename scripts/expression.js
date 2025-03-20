@@ -7,6 +7,12 @@ class Expression {
             // Replace π with Math.PI
             expression = expression.replace(/π/g, "Math.PI");
 
+            // Replace "e" (Euler's number) with Math.E
+            expression = expression.replace(/\be\b/g, "Math.E");
+
+            // x^y → Math.pow(x, y)
+            expression = expression.replace(/(\d+(\.\d+)?|\([^()]+\))\^(\d+(\.\d+)?|\([^()]+\))/g, "Math.pow($1,$3)");
+
             if (eval(expression) == "Infinity") {
                 alert("Inifinity | Invalid expression");
             } else {
@@ -18,4 +24,4 @@ class Expression {
     }
 }
 
-export { Expression };
+export { Expression };  

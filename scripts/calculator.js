@@ -104,7 +104,7 @@ class Calculator {
     handleKeyEvent (e) {
         const key = e.key;
 
-        if (/[0-9.()\+\-\*\/]/.test(key)) {
+        if (/[0-9.()\+\-\*\/^]/.test(key)) {
             this.updateInputField(key);
         } else if (key === "Backspace") {
             this.removeLastCharacter();

@@ -24,8 +24,8 @@ class Expression {
             // Replace "e" (Euler's number) with Math.E
             expression = expression.replace(/\be\b/g, "Math.E");
 
-            // x^y → Math.pow(x, y)
-            expression = expression.replace(/(\d+(\.\d+)?|\([^()]+\))\^(\d+(\.\d+)?|\([^()]+\))/g, "Math.pow($1,$3)");
+            // Replace "^"
+            expression = expression.replace(/\^/, "**");
 
             // Replace factorial notation
             expression = expression.replace(/(\d+)!/g, "factorial($1)");

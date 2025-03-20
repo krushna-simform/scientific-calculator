@@ -21,6 +21,11 @@ class Expression {
             // Replace factorial notation
             expression = expression.replace(/(\d+)!/g, "factorial($1)");
 
+            // Trigonometric functions conversion
+            expression = expression.replace(/\bsin\(/g, "Math.sin(");
+            expression = expression.replace(/\bcos\(/g, "Math.cos(");
+            expression = expression.replace(/\btan\(/g, "Math.tan(")
+
             // Handle other math functions
             expression = expression.replace(/\babs\(/g, "Math.abs(");
             expression = expression.replace(/\bexp\(/g, "Math.exp(");

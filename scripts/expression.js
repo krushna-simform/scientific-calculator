@@ -13,6 +13,9 @@ class Expression {
             // x^y → Math.pow(x, y)
             expression = expression.replace(/(\d+(\.\d+)?|\([^()]+\))\^(\d+(\.\d+)?|\([^()]+\))/g, "Math.pow($1,$3)");
 
+            // Handle other math functions
+            expression = expression.replace(/\babs\(/g, "Math.abs(");
+
             if (eval(expression) == "Infinity") {
                 alert("Inifinity | Invalid expression");
             } else {

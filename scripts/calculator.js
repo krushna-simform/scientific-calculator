@@ -39,6 +39,7 @@ class Calculator {
         this.setupPopup("button[value='functions']", "func-popup");
     }
 
+    // Toggle trigonometry and functions popup
     setupPopup(triggerSelector, popupId) {
         const trigger = document.querySelector(triggerSelector);
         const popup = document.getElementById(popupId);
@@ -81,7 +82,9 @@ class Calculator {
             this.clearInputField();
         } else if (value === "." && lastChar === ".") {
             return;
-        } else if (value === "." && this.currentInput.split(/[\+\-\*\/]/).pop().includes(".")) {
+        } 
+        // Prevents multiple decimal points in a single number (exp = "12.12.2")
+        else if (value === "." && this.currentInput.split(/[\+\-\*\/]/).pop().includes(".")) {
             return;
         }   
 
@@ -119,6 +122,7 @@ class Calculator {
         }
     }
 
+    // Toggle RED and DEG button
     toggleDegRed(button) {
         if (button.value == "degree") {
             button.value = "radian";
@@ -133,6 +137,7 @@ class Calculator {
         }
     }
 
+    // Toggle 2nd and Primary button
     toggleSecondPrimary (button) {
         if (button.value == "second-function") {
             button.value = "primary-function";
@@ -157,12 +162,14 @@ class Calculator {
         console.log(this.isSecondPrimary);
     }
 
+    // Toggle history popup
     toggleHistoryPopup() {
         const historyPopup = document.getElementById("history-popup");
         historyPopup.classList.toggle("hidden");
         this.displayHistory();
     }
 
+    // Display history for histroy popup
     displayHistory() {
         const historyList = document.getElementById("history-list");
         historyList.innerHTML = "";

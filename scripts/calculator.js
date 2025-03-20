@@ -78,7 +78,7 @@ class Calculator {
         }
 
         let lastChar = this.currentInput.slice(-1);
-        let operator = ["+", "-", "*", "/"];
+        let operator = ["+", "-", "*", "/", "%", "^"];
 
         if (operator.includes(value) && operator.includes(lastChar)) {
             return;
@@ -310,7 +310,7 @@ class Calculator {
             this.calculateResult();
         } else if (key === "E") {
             this.updateInputField("e");
-        } else if (/[0-9.()\+\-\*\/^\!e]/.test(key)) { 
+        } else if (/[0-9.()\+\-\*\/^\!e\%]/.test(key)) { 
             this.updateInputField(key.toLowerCase());
         }   
     }

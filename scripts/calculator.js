@@ -238,6 +238,17 @@ class Calculator {
             case "memory-store":
                 this.memory.memoryStore(parseFloat(this.currentInput) || 0);
                 break;
+            case "plus-minus":
+                if (this.currentInput === "0") return;
+                        
+                if (this.currentInput.startsWith("-")) {
+                    this.currentInput = this.currentInput.slice(1); // remove (-)
+                } else {
+                    this.currentInput = "-" + this.currentInput; // add (+)
+                }
+                    
+                this.inputField.textContent = this.currentInput;
+                break;
             default:
                 if (this.resultDisplayed && !/[\+\-\*\/]/.test(value)) {
                     this.clearInputField();

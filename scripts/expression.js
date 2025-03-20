@@ -10,6 +10,10 @@ class Expression {
         Math.cosdeg = (x) => Math.cos((Math.PI / 180) * x);
         Math.tandeg = (x) => Math.tan((Math.PI / 180) * x);
 
+        Math.asindeg = (x) => (180 / Math.PI) * Math.asin(x);
+        Math.acosdeg = (x) => (180 / Math.PI) * Math.acos(x);
+        Math.atandeg = (x) => (180 / Math.PI) * Math.atan(x);
+
         try {
             // Remove 0 value exp: 03 => 3
             expression = expression.replace(/\b0+(\d+)/g, "$1");
@@ -27,14 +31,20 @@ class Expression {
             expression = expression.replace(/(\d+)!/g, "factorial($1)");
 
             // Trigonometric functions conversion
-            if (degreeMode) {
+            if (!degreeMode) {
                 expression = expression.replace(/\bsin\(/g, "Math.sindeg(");
                 expression = expression.replace(/\bcos\(/g, "Math.cosdeg(");
                 expression = expression.replace(/\btan\(/g, "Math.tandeg(");
+                expression = expression.replace(/\basin\(/g, "Math.asindeg(");
+                expression = expression.replace(/\bacos\(/g, "Math.acosdeg(");
+                expression = expression.replace(/\batan\(/g, "Math.atandeg(");
             } else {
                 expression = expression.replace(/\bsin\(/g, "Math.sin(");
                 expression = expression.replace(/\bcos\(/g, "Math.cos(");
                 expression = expression.replace(/\btan\(/g, "Math.tan(");
+                expression = expression.replace(/\basin\(/g, "Math.asin(");
+                expression = expression.replace(/\bacos\(/g, "Math.acos(");
+                expression = expression.replace(/\batan\(/g, "Math.atan("); 
             }
 
             // Handle other math functions

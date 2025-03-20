@@ -12,6 +12,11 @@ class Calculator {
         this.resultDisplayed = false;
         this.history = [];
         this.isDegreeMode = false;
+        this.isSecondPrimary = false;
+
+        this.sinBtn = document.querySelector("button[value='sin']");
+        this.cosBtn = document.querySelector("button[value='cos']");
+        this.tanBtn = document.querySelector("button[value='tan']");
 
         this.expression = new Expression();
         this.h = new History(this.history, "history");
@@ -119,6 +124,30 @@ class Calculator {
         }
     }
 
+    toggleSecondPrimary (button) {
+        if (button.value == "second-function") {
+            button.value = "primary-function";
+            button.ariaLabel = "Primary Functions";
+            button.textContent = "Primary";
+            this.isSecondPrimary = true;
+
+            this.sinBtn.value = this.sinBtn.ariaLabel = this.sinBtn.textContent = "asin"
+            this.cosBtn.value = this.cosBtn.ariaLabel = this.cosBtn.textContent = "acos"
+            this.tanBtn.value = this.tanBtn.ariaLabel = this.tanBtn.textContent = "atan"
+            
+        } else {
+            button.value = "second-function";
+            button.ariaLabel = "Second Functions";
+            button.textContent = "2nd";
+            this.isSecondPrimary = false;
+            
+            this.sinBtn.value = this.sinBtn.ariaLabel = this.sinBtn.textContent = "sin"
+            this.cosBtn.value = this.cosBtn.ariaLabel = this.cosBtn.textContent = "cos"
+            this.tanBtn.value = this.tanBtn.ariaLabel = this.tanBtn.textContent = "tan"
+        }
+        console.log(this.isSecondPrimary);
+    }
+
     // Handle mouse events
     handleButtonClick (e) {
         const button = e.target.closest("button");
@@ -145,6 +174,10 @@ class Calculator {
             case "degree":
             case "radian":
                 this.toggleDegRed(button);
+                break;
+            case "second-function":
+            case "primary-function":
+                this.toggleSecondPrimary(button);
                 break;
             default:
                 if (this.resultDisplayed && !/[\+\-\*\/]/.test(value)) {

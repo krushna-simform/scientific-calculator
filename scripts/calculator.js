@@ -53,14 +53,15 @@ class Calculator {
             popup.classList.toggle("hidden");
         });
 
-        popup.querySelectorAll("button").forEach(button => {
-            button.addEventListener("click", (e) => {
-                const value = e.target.getAttribute("value");
-                if (value) {
-                    this.updateInputField(value + "(");
-                }
-                popup.classList.add("hidden");
-            });
+        popup.addEventListener("click", (e) => {
+            const button = e.target.closest("button");
+            if (button) {
+              const value = button.getAttribute("value");
+              if (value) {
+                this.updateInputField(value + "(");
+              }
+              popup.classList.add("hidden");
+            }
         });
 
         document.addEventListener("click", (e) => {

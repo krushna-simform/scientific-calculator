@@ -31,7 +31,7 @@ class Expression {
             expression = expression.replace(/(\d+)!/g, "factorial($1)");
 
             // Trigonometric functions conversion
-            if (!degreeMode) {
+            if (degreeMode) {
                 expression = expression.replace(/\bsin\(/g, "Math.sindeg(");
                 expression = expression.replace(/\bcos\(/g, "Math.cosdeg(");
                 expression = expression.replace(/\btan\(/g, "Math.tandeg(");

@@ -1,4 +1,4 @@
-class Memory {
+class MemoryStorage {
     constructor(key = "memory") {
         this.key = key;
         this.memoryValue = this.loadMemory();
@@ -48,4 +48,4 @@ class Memory {
     }
 }
 
-export { Memory };
+export { MemoryStorage };

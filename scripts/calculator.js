@@ -1,6 +1,6 @@
 import { Expression } from "./expression.js";
 import { History } from "./history.js";
-import { Memory } from "./memory.js";
+import { MemoryStorage } from "./calculatorMemoryStorage.js";
 
 class Calculator {
     constructor (calculatorSelector, inputFieldSelector, buttonSelectors) {
@@ -22,7 +22,7 @@ class Calculator {
 
         this.expression = new Expression();
         this.h = new History("history");
-        this.memory = new Memory();
+        this.memory = new MemoryStorage();
         
         this.init();
     }
@@ -260,19 +260,19 @@ class Calculator {
                 this.toggleSecondPrimary(button);
                 break;
             case "memory-clear": 
-                this.memory.memoryClear();
+                this.memory.clearMemory();
                 break;
             case "memory-recall":
-                this.updateInputField(this.memory.memoryRecall().toString());
+                this.updateInputField(this.memory.recallMemory().toString());
                 break;
             case "memory-add":
-                this.memory.memoryAdd(parseFloat(this.currentInput) || 0);
+                this.memory.addToMemory(parseFloat(this.currentInput) || 0);
                 break;
             case "memory-subtract":
-                this.memory.memorySubtract(parseFloat(this.currentInput) || 0);
+                this.memory.subtractFromMemory(parseFloat(this.currentInput) || 0);
                 break;
             case "memory-store":
-                this.memory.memoryStore(parseFloat(this.currentInput) || 0);
+                this.memory.storeMemory(parseFloat(this.currentInput) || 0);
                 break;
             case "plus-minus":
                 if (this.currentInput === "0") return;

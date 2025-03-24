@@ -13,30 +13,36 @@ class Memory {
     }
 
     // Store a new value in memory
-    memoryStore(value) {
-        this.memoryValue = value;
-        localStorage.setItem(this.key, this.memoryValue);
+    storeMemory(value) {
+        if (Number.isFinite(value)) {
+            this.memoryValue = value;
+            localStorage.setItem(this.key, this.memoryValue);
+        }
     }
 
     // Recall the stored value
-    memoryRecall() {
+    recallMemory() {
         return this.memoryValue;
     }
 
     // Add a value to the stored memory
-    memoryAdd(value) {
-        this.memoryValue += value;
-        localStorage.setItem(this.key, this.memoryValue);
+    addToMemory(value) {
+        if (Number.isFinite(value)) {
+            this.memoryValue += value;
+            localStorage.setItem(this.key, this.memoryValue);
+        }
     }
 
     // Subtract a value from the stored memory
-    memorySubtract(value) {
-        this.memoryValue -= value;
-        localStorage.setItem(this.key, this.memoryValue);
+    subtractFromMemory(value) {
+        if (Number.isFinite(value)) {
+            this.memoryValue -= value;
+            localStorage.setItem(this.key, this.memoryValue);
+        }
     }
 
     // Clear memory storage
-    memoryClear() {
+    clearMemory() {
         this.memoryValue = 0;
         localStorage.removeItem(this.key);
     }

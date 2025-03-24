@@ -155,26 +155,16 @@ class Calculator {
 
     // Toggle 2nd and Primary button
     toggleSecondPrimary (button) {
-        if (button.value == "second-function") {
-            button.value = "primary-function";
-            button.ariaLabel = "Primary Functions";
-            button.textContent = "Primary";
-            this.isSecondPrimary = true;
+        const isSecondMode = this.isSecondPrimary;
+        button.value = isSecondMode ? "second-function" : "primary-function";
+        button.ariaLabel = isSecondMode ? "Second Functions": "Primary Functions";
+        button.textContent = isSecondMode ? "2nd" : "Primary";
 
-            this.sinBtn.value = this.sinBtn.ariaLabel = this.sinBtn.textContent = "asin"
-            this.cosBtn.value = this.cosBtn.ariaLabel = this.cosBtn.textContent = "acos"
-            this.tanBtn.value = this.tanBtn.ariaLabel = this.tanBtn.textContent = "atan"
-            
-        } else {
-            button.value = "second-function";
-            button.ariaLabel = "Second Functions";
-            button.textContent = "2nd";
-            this.isSecondPrimary = false;
-            
-            this.sinBtn.value = this.sinBtn.ariaLabel = this.sinBtn.textContent = "sin"
-            this.cosBtn.value = this.cosBtn.ariaLabel = this.cosBtn.textContent = "cos"
-            this.tanBtn.value = this.tanBtn.ariaLabel = this.tanBtn.textContent = "tan"
-        }
+        this.sinBtn.value = this.sinBtn.ariaLabel = this.sinBtn.textContent = isSecondMode ? "sin" : "asin";
+        this.cosBtn.value = this.cosBtn.ariaLabel = this.cosBtn.textContent = isSecondMode ? "cos" : "acos";
+        this.tanBtn.value = this.tanBtn.ariaLabel = this.tanBtn.textContent = isSecondMode ? "tan" : "atan";
+
+        this.isSecondPrimary = !isSecondMode;
     }
 
     // Toggle history popup
@@ -209,18 +199,12 @@ class Calculator {
 
     // Toggle Engineering notation
     toggleFE() {
-        if (this.feButton.value === "f-e") {
-            this.feButton.value = "ex";
-            this.feButton.textContent = "E";
-            this.feButton.ariaLabel = "Scientific Notation Mode";
-            this.feMode = true;
-        } else {
-            this.feButton.value = "f-e";
-            this.feButton.textContent = "F-E";
-            this.feButton.ariaLabel = "Default Notation Mode";
-            this.feMode = false;
-        }
-        this.updateDisplay();
+        const isFeMode = this.feMode;
+        this.feButton.value = isFeMode ? "f-e" : "ex";
+        this.feButton.textContent = isFeMode ? "F-E" : "E";
+        this.feButton.ariaLabel = isFeMode ? "Default Notation Mode" : "Scientific Notation Mode";
+
+        this.feMode = !isFeMode;
     }
 
     // Handle mouse events

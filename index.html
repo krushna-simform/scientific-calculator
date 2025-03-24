@@ -26,9 +26,19 @@
 <body>
     <div class="calculator">
         
+        <!-- history logo -->
+        <img src="/assets/icons/history-logo.svg" alt="history icon" id="history-logo" tabindex="0">
+
         <!-- input field -->
         <div class="input-field">
             <span class="input-field-text" tabindex="0">0</span>
+        </div>
+        
+          <!-- History Popup -->
+        <div id="history-popup" class="popup hidden">
+            <p>Calculation History</p>
+            <ul id="history-list"></ul>
+            <button id="clear-history" aria-label="clear history">Clear History</button>
         </div>
 
         <!-- degree functions -->
@@ -42,7 +52,7 @@
             
             <button
                 aria-label="Float and Engineering notation"
-                value="float-engineering"
+                value="f-e"
             >
                 <span>F-E</span>
             </button>
@@ -125,6 +135,20 @@
             </button>
         </div>
 
+        <!-- Trigonometry Popup -->
+        <div id="trig-popup" class="popup hidden">
+            <button value="sin">sin</button>
+            <button value="cos">cos</button>
+            <button value="tan">tan</button>
+        </div>
+
+        <!-- Functions Popup -->
+        <div id="func-popup" class="popup hidden">
+            <button value="floor">floor</button>
+            <button value="ceil">ceil</button>
+            <button value="round">round</button>
+        </div>
+
         <!-- numeric and operator buttons -->
         <div class="numeric-operator-buttons">
             <button 
@@ -138,7 +162,7 @@
             <button 
                 class="function-button"
                 aria-label="PI"
-                value="pi"
+                value="π"
             >
                 π
             </button>
@@ -146,7 +170,7 @@
             <button 
                 class="function-button"
                 aria-label="Euler's Number"
-                value="euler-number"
+                value="e"
             >
                 e
             </button>
@@ -174,7 +198,7 @@
             <button 
                 class="function-button"
                 aria-label="Square of x"
-                value="square-of-x"
+                value="^2"
             >
                 <i>x</i><sup>2</sup>
             </button>
@@ -182,7 +206,7 @@
             <button 
                 class="function-button"
                 aria-label="Reciprocal of x"
-                value="reciprocal-of-x"
+                value="1/"
             >
                 1/<i>x</i>
             </button>
@@ -190,7 +214,7 @@
             <button 
                 class="function-button"
                 aria-label="Absolute value of x"
-                value="absolute-x"
+                value="abs("
             >
                 |<i> x </i>|
             </button>
@@ -198,7 +222,7 @@
             <button 
                 class="function-button"
                 aria-label="Exponential function"
-                value="exponential"
+                value="exp("
             >
                 exp
             </button>
@@ -206,7 +230,7 @@
             <button 
                 class="function-button"
                 aria-label="Modulo operation"
-                value="mod"
+                value="%"
             >
                 mod
             </button>
@@ -214,7 +238,7 @@
             <button 
                 class="function-button"
                 aria-label="Two squareroot of x"
-                value="two-squareroot-x"
+                value="sqrt("
             >
                 2√<i>x</i>
             </button>
@@ -238,7 +262,7 @@
             <button 
                 class="function-button"
                 aria-label="Factorial"
-                value="factorial"
+                value="!"
             >
                 <i>n</i>&#33;
             </button>
@@ -254,7 +278,7 @@
             <button 
                 class="function-button"
                 aria-label="Power of x"
-                value="power-of-x"
+                value="^"
             >
                 <i>x</i><sup>y</sup>
             </button>
@@ -294,7 +318,7 @@
             <button 
                 class="function-button"
                 aria-label="10 to the power of x"
-                value="10-to-the-power-x"
+                value="10^"
             >
                 10<sup><i>x</i></sup>
             </button>
@@ -334,7 +358,7 @@
             <button 
                 class="function-button"
                 aria-label="Logarithm"
-                value="log"
+                value="log("
             >
                 log
             </button>
@@ -374,7 +398,7 @@
             <button 
                 class="function-button"
                 aria-label="Natural Logarithm"
-                value="ln"
+                value="ln("
             >
                 ln
             </button>

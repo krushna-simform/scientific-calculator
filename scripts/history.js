@@ -18,8 +18,10 @@ class History {
     }
 
     dataPush (data, cb = () => {}) {
-        this.history.push(data);
-        this.historySave();
+        if (!Number.isNaN(data)) {
+            this.history.push(data);
+            this.historySave();
+        }
         cb();
     }
 
@@ -30,7 +32,7 @@ class History {
 
     // Get history from localStorage
     getHistory() {
-        const storedData = JSON.parse(localStorage.getItem(this.key)) || [];
+        const storedData = this.history || [];
         return storedData.map(entry => `${entry.question} = ${entry.answer}`);
     }
 
@@ -38,7 +40,6 @@ class History {
     clearHistory() {
         localStorage.removeItem(this.key);
         this.history = [];  
-        this.historySave();  
     }
 }
 

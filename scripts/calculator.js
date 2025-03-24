@@ -39,6 +39,7 @@ class Calculator {
 
         document.getElementById("history-logo").addEventListener("click", () => this.toggleHistoryPopup());
         document.querySelector("#clear-history").addEventListener("click", () => this.clearHistory());
+        document.querySelector("#close-button").addEventListener("click", () => this.toggleHistoryPopup());
 
         this.setupPopup("button[value='trigonometry']", "trig-popup");
         this.setupPopup("button[value='functions']", "func-popup");

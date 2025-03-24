@@ -13,6 +13,7 @@ class Calculator {
         this.resultDisplayed = false;
         this.isDegreeMode = true;
         this.isSecondPrimary = false;
+        this.feMode = false;
 
         this.feButton = document.querySelector(feButton);
 
@@ -145,17 +146,11 @@ class Calculator {
 
     // Toggle RED and DEG button
     toggleDegRed(button) {
-        if (this.isDegreeMode) {
-            button.value = "radian";
-            button.textContent = "RAD";
-            button.ariaLabel = "Radian Mode";
-            this.isDegreeMode = false;
-        } else {
-            button.value = "degree";
-            button.textContent = "DEG";
-            button.ariaLabel = "Degree Mode";
-            this.isDegreeMode = true;
-        }
+        const isDeg = this.isDegreeMode;
+        button.value = isDeg ? "radian" : "degree";
+        button.textContent = isDeg ? "RAD" : "DEG";
+        button.ariaLabel = isDeg ? "Radian Mode" : "Degree Mode";
+        this.isDegreeMode = !isDeg;
     }
 
     // Toggle 2nd and Primary button

@@ -3,7 +3,7 @@ import { History } from "./history.js";
 import { MemoryStorage } from "./calculatorMemoryStorage.js";
 
 class Calculator {
-    constructor (calculatorSelector, inputFieldSelector, buttonSelectors) {
+    constructor (calculatorSelector, inputFieldSelector, buttonSelectors, feButton, sinButton, cosButton, tanButton) {
         // DOM Selectors
         this.calculatorContainer = document.querySelector(calculatorSelector);
         this.inputField = document.querySelector(inputFieldSelector);
@@ -14,11 +14,11 @@ class Calculator {
         this.isDegreeMode = true;
         this.isSecondPrimary = false;
 
-        this.feButton = document.querySelector("button[value='f-e']");
+        this.feButton = document.querySelector(feButton);
 
-        this.sinBtn = document.querySelector("button[value='sin']");
-        this.cosBtn = document.querySelector("button[value='cos']");
-        this.tanBtn = document.querySelector("button[value='tan']");
+        this.sinBtn = document.querySelector(sinButton);
+        this.cosBtn = document.querySelector(cosButton);
+        this.tanBtn = document.querySelector(tanButton);
 
         this.expression = new Expression();
         this.h = new History("history");

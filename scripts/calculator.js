@@ -238,6 +238,9 @@ class Calculator {
 
         if (notPrintValue.includes(value)) {
             return;
+        } else if (value.startsWith("memory")) {
+            this.handleMemoryOperations(value);
+            return;
         }
 
         switch (value) {
@@ -259,21 +262,6 @@ class Calculator {
             case "primary-function":
                 this.toggleSecondPrimary(button);
                 break;
-            case "memory-clear": 
-                this.memory.clearMemory();
-                break;
-            case "memory-recall":
-                this.updateInputField(this.memory.recallMemory().toString());
-                break;
-            case "memory-add":
-                this.memory.addToMemory(parseFloat(this.currentInput) || 0);
-                break;
-            case "memory-subtract":
-                this.memory.subtractFromMemory(parseFloat(this.currentInput) || 0);
-                break;
-            case "memory-store":
-                this.memory.storeMemory(parseFloat(this.currentInput) || 0);
-                break;
             case "plus-minus":
                 if (this.currentInput === "0") return;
                         
@@ -290,6 +278,26 @@ class Calculator {
                     this.clearInputField();
                 }
                 this.updateInputField(value);
+        }
+    }
+
+    handleMemoryOperations (value) {
+        switch (value) {
+            case "memory-clear":
+                this.memory.clearMemory();
+                break;
+            case "memory-recall":
+                this.updateInputField(this.memory.recallMemory().toString());
+                break;
+            case "memory-add":
+                this.memory.addToMemory(parseFloat(this.currentInput) || 0);
+                break;
+            case "memory-subtract":
+                this.memory.subtractFromMemory(parseFloat(this.currentInput) || 0);
+                break;
+            case "memory-store":
+                this.memory.storeMemory(parseFloat(this.currentInput) || 0);
+                break;
         }
     }
 

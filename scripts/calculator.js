@@ -180,7 +180,6 @@ class Calculator {
             this.cosBtn.value = this.cosBtn.ariaLabel = this.cosBtn.textContent = "cos"
             this.tanBtn.value = this.tanBtn.ariaLabel = this.tanBtn.textContent = "tan"
         }
-        console.log(this.isSecondPrimary);
     }
 
     // Toggle history popup

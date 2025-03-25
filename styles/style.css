@@ -260,6 +260,26 @@ body {
     cursor: pointer;
 }
 
+#close-button {
+    height: 1.6rem;
+    width: 1.6rem;
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 0.8rem;
+    top: 0.8rem;
+}
+
+#close-button img {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+#close-button:hover img {
+    height: 1.4rem;
+    width: 1.4rem;
+    transition: ease-in-out;
+}
 /* for every button in calculator ui*/
 button:hover {
     cursor: pointer;
